@@ -1,3 +1,5 @@
+// cargo run --bin 01
+
 use std::time::Instant;
 
 const INPUT: [i32; 100] = [
