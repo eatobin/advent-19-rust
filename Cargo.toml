@@ -2,14 +2,14 @@
 name = "AdventOfCode2019"
 version = "0.1.0"
 authors = ["Axel Lindeberg <axel.ew.lindeberg@gmail.com>"]
-edition = "2018"
+edition = "2021"
 
 [lib]
 name = "intcoder"
 path = "src/intcoder.rs"
 
 [dependencies]
-itertools = "0.8.2"
-num-integer = "0.1.41"
+itertools = "0.13.0"
+num-integer = "0.1.46"
 mod_exp = "1.0.1"
 easy_io = "0.3.0"
