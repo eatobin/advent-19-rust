@@ -31,6 +31,7 @@ fn part_one(masses: [i32; 100]) -> i32 {
 fn part_two(masses: [i32; 100]) -> i32 {
     masses.iter().map(|mass| rec_fuel_value(*mass)).sum::<i32>()
 }
+
 fn main() {
     let mut tot_fuel: i32 = 0;
     let mut tot_fuel_rec: i32 = 0;
