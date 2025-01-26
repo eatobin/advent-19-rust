@@ -24,6 +24,13 @@ fn rec_fuel_value(mass: i32) -> i32 {
     sum
 }
 
+fn part_one(masses: [i32; 100]) -> i32 {
+    masses.iter().map(|mass| fuel_value(*mass)).sum::<i32>()
+}
+
+fn part_two(masses: [i32; 100]) -> i32 {
+    masses.iter().map(|mass| rec_fuel_value(*mass)).sum::<i32>()
+}
 fn main() {
     let mut tot_fuel: i32 = 0;
     let mut tot_fuel_rec: i32 = 0;
@@ -32,34 +39,11 @@ fn main() {
         tot_fuel += fuel_value(mass);
     }
     println!("Part a: {}", tot_fuel); // 3337766
+    println!("Part a - again: {}\n", part_one(INPUT)); // 3337766
 
     for mass in INPUT {
         tot_fuel_rec += rec_fuel_value(mass);
     }
     println!("Part b: {}", tot_fuel_rec); // 5003788
+    println!("Part b - again: {}", part_two(INPUT)); // 3337766
 }
-
-// fn part_one() -> i32 {
-//     INPUT.iter().map(|i| i / 3 - 2).sum::<i32>()
-// }
-//
-// fn part_two() -> i32 {
-//     INPUT
-//         .iter()
-//         .map(|&i| {
-//             let (mut ans, mut mass) = (0, i);
-//             loop {
-//                 mass = (mass / 3) - 2;
-//                 if mass <= 0 {
-//                     break ans;
-//                 }
-//                 ans += mass;
-//             }
-//         })
-//         .sum::<i32>()
-// }
-
-// fn main() {
-// println!("Part one: {}", part_one());
-// println!("Part two: {}", part_two());
-// }
