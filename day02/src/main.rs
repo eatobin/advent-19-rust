@@ -38,6 +38,31 @@ fn opcode(intcode: &mut Intcode) -> u8 {
     }
 }
 
+fn updated_memory(intcode: &mut Intcode, noun: i32, verb: i32) -> () {
+    intcode.memory[1] = noun;
+    intcode.memory[2] = verb;
+}
+
+fn noun_verb() -> i32 {
+    for noun in 0..101 {
+        for verb in 0..101 {
+            let mut intcode = make_intcode();
+            updated_memory(&mut intcode, noun, verb);
+
+            let mut ic_return: u8 = 1;
+            while ic_return == 1 {
+                ic_return = opcode(&mut intcode);
+            }
+
+            let candidate = intcode.memory[0];
+            if (candidate == 19690720) {
+                return 100 * noun + verb;
+            }
+        }
+    }
+    -1
+}
+
 fn main() {
     let intcode = make_intcode();
     println!("intcode.pointer is: {}", intcode.pointer);
