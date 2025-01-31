@@ -1,5 +1,5 @@
 struct Intcode {
-    pointer: i32,
+    pointer: usize,
     memory: [i32; 121],
 }
 
@@ -15,6 +15,27 @@ fn make_intcode() -> Intcode {
         ],
     };
     intcode
+}
+
+fn opcode(intcode: &mut Intcode) -> u8 {
+    let action: i32 = intcode.memory[intcode.pointer];
+    let address1: usize = intcode.memory[intcode.pointer + 1] as usize;
+    let address2: usize = intcode.memory[intcode.pointer + 2] as usize;
+    let address3: usize = intcode.memory[intcode.pointer + 3] as usize;
+
+    match action {
+        1 => {
+            intcode.memory[address3] = intcode.memory[address1] + intcode.memory[address2];
+            intcode.pointer += 4;
+            1
+        }
+        2 => {
+            intcode.memory[address3] = intcode.memory[address1] * intcode.memory[address2];
+            intcode.pointer += 4;
+            1
+        }
+        _ => 0,
+    }
 }
 
 fn main() {
