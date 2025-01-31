@@ -55,7 +55,7 @@ fn noun_verb() -> i32 {
             }
 
             let candidate = intcode.memory[0];
-            if (candidate == 19690720) {
+            if candidate == 19690720 {
                 return 100 * noun + verb;
             }
         }
@@ -64,9 +64,14 @@ fn noun_verb() -> i32 {
 }
 
 fn main() {
-    let intcode = make_intcode();
-    println!("intcode.pointer is: {}", intcode.pointer);
-    println!("intcode[0] is: {}", intcode.memory[0]);
-    println!("intcode[3] is: {}", intcode.memory[3]);
-    println!("intcode[120] is: {}", intcode.memory[120]);
+    let mut intcode = make_intcode();
+    updated_memory(&mut intcode, 12, 2);
+
+    let mut ic_return: u8 = 1;
+    while ic_return == 1 {
+        ic_return = opcode(&mut intcode);
+    }
+
+    println!("\nPart A answer = {}. Correct = 2890696", intcode.memory[0]);
+    println!("Part B answer = {}. Correct = 8226", noun_verb());
 }
