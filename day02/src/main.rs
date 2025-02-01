@@ -13,7 +13,7 @@ fn main() {
     }
 
     println!("\nPart A answer = {}. Correct = 2890696", intcode.memory[0]);
-    println!("Part B answer = {}. Correct = 8226\n", noun_verb());
+    println!("Part B answer = {}. Correct = 8226", noun_verb());
 }
 
 fn make_intcode() -> Intcode {
