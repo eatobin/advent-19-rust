@@ -1,16 +1,30 @@
-fn change_value(arr: &mut [i32; 5]) -> &mut [i32; 5] {
-    arr[1] = 10;
-    arr[4] = 50;
-    arr
+// fn change_value(arr: &mut [i32; 5]) -> &mut [i32; 5] {
+//     arr[1] = 10;
+//     arr[4] = 50;
+//     arr
+// }
+//
+// fn main() {
+//     let mut arr: [i32; 5] = [1, 2, 3, 4, 5];
+//     println!("{:p}", &arr);
+//     println!("this is {}", arr[4]);
+//     arr = *change_value(&mut arr);
+//     println!("{:p}", &arr);
+//     println!("this is now {}", arr[4]);
+// }
+
+fn change_value(arr: &mut [i32; 5], zero: i32, four: i32) {
+    arr[0] = zero;
+    arr[4] = four;
 }
 
 fn main() {
     let mut arr: [i32; 5] = [1, 2, 3, 4, 5];
     println!("{:p}", &arr);
-    println!("this is {}", arr[4]);
-    arr = *change_value(&mut arr);
+    println!("this is {}", arr[0]);
+    change_value(&mut arr, 10, 50);
     println!("{:p}", &arr);
-    println!("this is now {}", arr[4]);
+    println!("this is now {}", arr[0]);
 }
 
 // struct Intcode {
