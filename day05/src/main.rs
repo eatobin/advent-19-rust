@@ -13,6 +13,24 @@
 //     println!("this is now {}", arr[4]);
 // }
 
+// format!("{:04}", 42);             // => "0042" with leading zeros
+
+// int *pad5(const int op, Instruction instruction) {
+// char buffer[6];
+// snprintf(buffer, 6, "%05d", op);
+// for (int i = 0; i < 5; i++) {
+// instruction[i] = buffer[i] - '0';
+// }
+// return instruction;
+// }
+
+fn pad5(op: i32, instruction: &mut [u8; 5]) {
+    let padded_string = format!("{:05}", op);
+    let buffer = padded_string.as_bytes();
+    for i in 0..5 {
+        instruction[i] = buffer[i] - 48;
+    }
+}
 fn change_value(arr: &mut [i32; 5], zero: i32, four: i32) {
     arr[0] = zero;
     arr[4] = four;
@@ -25,6 +43,13 @@ fn main() {
     change_value(&mut arr, 10, 50);
     println!("{:p}", &arr);
     println!("this is now {}", arr[0]);
+    let mut instruction: [u8; 5] = [1, 2, 3, 4, 5];
+    println!("{:p}", &instruction);
+    pad5(12345, &mut instruction);
+    for i in 0..5 {
+        println!("{}", instruction[i]);
+    }
+    println!("{:p}", &instruction);
 }
 
 // struct Intcode {
