@@ -31,18 +31,19 @@ fn pad5(op: i32, instruction: &mut [u8; 5]) {
         instruction[i] = buffer[i] - 48;
     }
 }
-fn change_value(arr: &mut [i32; 5], zero: i32, four: i32) {
-    arr[0] = zero;
-    arr[4] = four;
-}
+
+// fn change_value(arr: &mut [i32; 5], zero: i32, four: i32) {
+//     arr[0] = zero;
+//     arr[4] = four;
+// }
 
 fn main() {
-    let mut arr: [i32; 5] = [1, 2, 3, 4, 5];
-    println!("{:p}", &arr);
-    println!("this is {}", arr[0]);
-    change_value(&mut arr, 10, 50);
-    println!("{:p}", &arr);
-    println!("this is now {}", arr[0]);
+    // let mut arr: [i32; 5] = [1, 2, 3, 4, 5];
+    // println!("{:p}", &arr);
+    // println!("this is {}", arr[0]);
+    // change_value(&mut arr, 10, 50);
+    // println!("{:p}", &arr);
+    // println!("this is now {}", arr[0]);
     let mut instruction: [u8; 5] = [1, 2, 3, 4, 5];
     println!("{:p}", &instruction);
     pad5(12345, &mut instruction);
