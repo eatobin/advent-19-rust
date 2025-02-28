@@ -24,12 +24,13 @@
 // return instruction;
 // }
 
-fn pad5(op: i32, instruction: &mut [u8; 5]) {
-    let padded_string = format!("{:05}", op);
-    let buffer = padded_string.as_bytes();
+fn pad5(op: i32, instruction: &mut [i32; 5]) -> &mut [i32; 5] {
+    let as_string = format!("{:05}", op);
+    let as_bytes = as_string.as_bytes();
     for i in 0..5 {
-        instruction[i] = buffer[i] - 48;
+        instruction[i] = as_bytes[i];
     }
+    instruction
 }
 
 // fn change_value(arr: &mut [i32; 5], zero: i32, four: i32) {
