@@ -1,57 +1,20 @@
-// fn change_value(arr: &mut [i32; 5]) -> &mut [i32; 5] {
-//     arr[1] = 10;
-//     arr[4] = 50;
-//     arr
-// }
-//
-// fn main() {
-//     let mut arr: [i32; 5] = [1, 2, 3, 4, 5];
-//     println!("{:p}", &arr);
-//     println!("this is {}", arr[4]);
-//     arr = *change_value(&mut arr);
-//     println!("{:p}", &arr);
-//     println!("this is now {}", arr[4]);
-// }
-
-// format!("{:04}", 42);             // => "0042" with leading zeros
-
-// int *pad5(const int op, Instruction instruction) {
-// char buffer[6];
-// snprintf(buffer, 6, "%05d", op);
-// for (int i = 0; i < 5; i++) {
-// instruction[i] = buffer[i] - '0';
-// }
-// return instruction;
-// }
-
 fn pad5(op: i32, instruction: &mut [i32; 5]) -> &mut [i32; 5] {
     let as_string = format!("{:05}", op);
     let as_bytes = as_string.as_bytes();
     for i in 0..5 {
-        instruction[i] = as_bytes[i];
+        instruction[i] = (as_bytes[i] as i32) - 48;
     }
     instruction
 }
 
-// fn change_value(arr: &mut [i32; 5], zero: i32, four: i32) {
-//     arr[0] = zero;
-//     arr[4] = four;
-// }
-
 fn main() {
-    // let mut arr: [i32; 5] = [1, 2, 3, 4, 5];
-    // println!("{:p}", &arr);
-    // println!("this is {}", arr[0]);
-    // change_value(&mut arr, 10, 50);
-    // println!("{:p}", &arr);
-    // println!("this is now {}", arr[0]);
-    let mut instruction: [u8; 5] = [1, 2, 3, 4, 5];
+    let mut instruction: [i32; 5] = [0, 0, 0, 0, 0];
     println!("{:p}", &instruction);
-    pad5(12345, &mut instruction);
+    pad5(7905, &mut instruction);
     for i in 0..5 {
-        println!("{}", instruction[i]);
+        print!("{} ", instruction[i]);
     }
-    println!("{:p}", &instruction);
+    println!("\n{:p}", &instruction);
 }
 
 // struct Intcode {
