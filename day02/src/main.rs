@@ -3,19 +3,6 @@ struct Intcode {
     memory: [i32; 121],
 }
 
-fn main() {
-    let mut intcode: Intcode = make_intcode();
-    updated_memory(&mut intcode, 12, 2);
-
-    let mut ic_return: u8 = 1;
-    while ic_return == 1 {
-        ic_return = opcode(&mut intcode);
-    }
-
-    println!("\nPart A answer = {}. Correct = 2890696", intcode.memory[0]);
-    println!("Part B answer = {}. Correct = 8226", noun_verb());
-}
-
 fn make_intcode() -> Intcode {
     let intcode: Intcode = Intcode {
         pointer: 0,
@@ -74,4 +61,17 @@ fn noun_verb() -> i32 {
         }
     }
     -1
+}
+
+fn main() {
+    let mut intcode: Intcode = make_intcode();
+    updated_memory(&mut intcode, 12, 2);
+
+    let mut ic_return: u8 = 1;
+    while ic_return == 1 {
+        ic_return = opcode(&mut intcode);
+    }
+
+    println!("\nPart A answer = {}. Correct = 2890696", intcode.memory[0]);
+    println!("Part B answer = {}. Correct = 8226", noun_verb());
 }
